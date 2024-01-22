@@ -1,0 +1,22 @@
+.contactForm {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  border: solid 1.5px black;
+  border-radius: 6px;
+}
+.formField {
+  border: transparent;
+  border: solid 1px grey;
+  border-radius: 4px;
+  width: 100%;
+}
+.inputBox {
+  display: flex;
+}
+.error {
+  font-size: small;
+  font-style: italic;
+}

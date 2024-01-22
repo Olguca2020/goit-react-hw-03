@@ -1,0 +1,13 @@
+.inputFeald {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.inputFeald:focus {
+  border: 2px solid #007bff;
+  outline: none;
+}
+label {
+  text-align: start;
+  display: block;
+}
