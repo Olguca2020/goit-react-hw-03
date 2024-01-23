@@ -1,9 +1,6 @@
 .contactForm {
   padding: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
+  margin-bottom: 20px;
   border: solid 1.5px black;
   border-radius: 6px;
 }
@@ -21,5 +18,9 @@
 }
 .error {
   font-size: small;
-  font-style: italic;
+  color: red;
+  text-align: start;
+}
+.formField:last-child {
+  margin-bottom: 15px;
 }

@@ -2,10 +2,14 @@ import { useId } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import css from "./ContactForm.module.css";
 import * as Yup from "yup";
+import { nanoid } from "nanoid";
 
-export const ContactForm = () => {
+export const ContactForm = ({ onSubmit }) => {
   const handleSubmit = (values, actions) => {
-    console.log(values);
+    values.id = nanoid();
+    const newContact = values;
+    console.log(newContact);
+    onSubmit(newContact);
     actions.resetForm();
   };
   const nameFieldId = useId();
@@ -35,8 +39,9 @@ export const ContactForm = () => {
             type="text"
             name="name"
           />
+          <ErrorMessage className={css.error} name="name" component="span" />
         </div>
-        <ErrorMessage className={css.error} name="name" as="span" />
+
         <div className="inputBox">
           <label htmlFor="numberFieldId">Number</label>
           <Field
@@ -45,8 +50,8 @@ export const ContactForm = () => {
             type="text"
             name="number"
           />
+          <ErrorMessage className={css.error} name="number" component="span" />
         </div>
-        <ErrorMessage className={css.error} name="number" as="span" />
         <button type="submit">Add contact</button>
       </Form>
     </Formik>
