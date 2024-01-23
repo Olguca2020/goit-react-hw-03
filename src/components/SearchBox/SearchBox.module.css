@@ -1,6 +1,8 @@
 .inputFeald {
-  box-sizing: border-box;
-  width: 100%;
+  display: block;
+  width: 340px;
+  margin-left: 0;
+  margin-right: auto;
 }
 
 .inputFeald:focus {

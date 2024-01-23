@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import "./App.css";
 import { ContactForm } from "./components/ContactForm/ContactForm";
@@ -12,7 +12,15 @@ function App() {
     { id: "id-3", name: "Eden Clements", number: "645-17-79" },
     { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
   ]);
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState(() => {
+    const savedCards = window.localStorage.getItem("filterValue");
+
+    if (savedCards !== null) {
+      const parsedCards = JSON.parse(savedCards);
+      setCards(parsedCards);
+    }
+    return "";
+  });
   const handleChange = (ev) => {
     setFilter(ev.target.value);
   };
@@ -24,11 +32,12 @@ function App() {
   };
 
   const handleContactDelete = (contactId) => {
-    // Фільтруємо масив, залишаючи тільки ті контакти, які не мають заданого ID
     const updatedCards = cards.filter((contact) => contact.id !== contactId);
     setCards(updatedCards);
   };
-
+  useEffect(() => {
+    window.localStorage.setItem("filterValue", JSON.stringify(cards));
+  }, [cards]);
   return (
     <div>
       <h1>Phonebook</h1>
